@@ -50,4 +50,17 @@ func main() {
 
 	//类型转换
 	fmt.Printf("\n浮点数转换为整型:%v %T\n", int(pi), int(pi))
+
+	var l = [...][]int{
+		{1, 2, 3},
+		{4, 5, 6, 7},
+	}
+	// 遍历二维数组
+	fmt.Println("\n二维数组:")
+	for _, v := range l {
+		for _, vv := range v {
+			fmt.Printf("%v ", vv)
+		}
+		fmt.Println()
+	}
 }

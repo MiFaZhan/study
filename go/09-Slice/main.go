@@ -27,6 +27,11 @@ func main() {
 	numbers[2] = 300
 
 	printSlice(numbers)
+
+	numbers1 := []int{1, 2, 3, 4, 5, 6}
+	fmt.Println("\nnumbers1[1:4]:", numbers1[1:4])
+	fmt.Println("numbers1[:4]:", numbers1[:4])
+	fmt.Println("numbers1[4:]:", numbers1[4:])
 }
 
 func printSlice(x []int) {

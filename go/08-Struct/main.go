@@ -19,4 +19,11 @@ func main() {
 	Book1.author = "余华"
 	fmt.Println("\nBook1 Title:", Book1.titile)
 	fmt.Println("Book1 Author:", Book1.author)
+
+	var struct_pointer *Books
+	struct_pointer = &Book1
+	// 访问结构体指针的字段
+	fmt.Println("\nBook1 ID:", struct_pointer.id)
+	fmt.Println("Book1 Title:", struct_pointer.titile)
+	fmt.Println("Book1 Author:", struct_pointer.author)
 }

@@ -41,7 +41,6 @@ func main() {
 		j = "特殊常量"
 		k = 3 << iota
 	)
-
 	fmt.Println("\n特殊常量:", h, i, j, k)
 
 	//浮点数

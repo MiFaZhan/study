@@ -13,9 +13,6 @@ func main() {
 	sum2 := 1
 	for sum2 <= 10 {
 		sum2 += sum2
-		if sum2 > 10 {
-			break // 满足条件时退出循环
-		}
 	}
 	fmt.Println("翻倍后结果:", sum2)
 

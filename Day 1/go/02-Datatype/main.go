@@ -56,6 +56,13 @@ func main() {
 	}
 	// 遍历二维数组
 	fmt.Println("\n二维数组:")
+	//for i := 0; i < len(l); i++ {
+	//	for j := 0; j < len(l[i]); j++ {
+	//		fmt.Printf("%v ", l[i][j])
+	//	}
+	//	fmt.Println()
+	//}
+
 	for _, v := range l {
 		for _, vv := range v {
 			fmt.Printf("%v ", vv)

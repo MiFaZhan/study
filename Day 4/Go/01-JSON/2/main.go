@@ -11,6 +11,7 @@ type Person struct {
 }
 
 func main() {
+	//解析到结构体
 	a := []byte(`{"name":"米法展","age":"18"}`)
 	var p Person
 	err := json.Unmarshal(a, &p)
@@ -20,6 +21,7 @@ func main() {
 	}
 	fmt.Println(p)
 
+	//解析到接口
 	b := []byte(`{"name":"枯藤","age":"18"}`)
 
 	var i interface{}
@@ -30,7 +32,7 @@ func main() {
 	}
 	fmt.Println(i)
 
-	//json array解析
+	//json array解析到结构体数组
 	jsonArr := []byte(`[{"name":"米法展","age":"18"},{"name":"枯藤","age":"20"}]`)
 	var arr []Person
 	err = json.Unmarshal(jsonArr, &arr)
@@ -40,9 +42,4 @@ func main() {
 	}
 	fmt.Println("\n", arr)
 
-	personMap := make(map[string]Person)
-	for _, person := range arr {
-		personMap[person.Name] = person
-	}
-	fmt.Println(personMap)
 }

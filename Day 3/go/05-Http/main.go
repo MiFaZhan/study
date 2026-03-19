@@ -2,48 +2,43 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 func main() {
-	//resp, err := http.Get("https://www.baidu.com")
-	//if err != nil {
-	//	fmt.Println("get error:", err)
-	//	return
-	//}
-	////程序在使用完response后必须关闭回复的主体
-	//defer resp.Body.Close()
-	//body, err := ioutil.ReadAll(resp.Body)
-	//if err != nil {
-	//	fmt.Println("read body error:", err)
-	//	return
-	//}
-	//fmt.Println(string(body))
-
-	apiUrl := "http://127.0.0.1:9090/get"
-	// URL param
+	apiUrl := "http://127.0.0.1:9090/get" // 定义请求的 API 地址
+	// 构造 URL 查询参数
 	data := url.Values{}
-	data.Set("name", "枯藤")
-	data.Set("age", "18")
+	data.Set("name", "枯藤") // 设置 name 参数
+	data.Set("age", "18")  // 设置 age 参数
+
+	// 解析基础 URL
 	u, err := url.ParseRequestURI(apiUrl)
 	if err != nil {
 		fmt.Printf("parse url requestUrl failed,err:%v\n", err)
+		return // 解析失败则直接返回
 	}
-	u.RawQuery = data.Encode() // URL encode
-	fmt.Println(u.String())
+	// 将编码后的参数拼接到 URL 后面
+	u.RawQuery = data.Encode()
+	fmt.Println(u.String()) // 打印完整的请求 URL
+
+	// 发送 GET 请求
 	var resp *http.Response
 	resp, err = http.Get(u.String())
 	if err != nil {
-		fmt.Println("post failed, err:%v\n", err)
+		fmt.Printf("get failed, err:%v\n", err) // 修正日志描述为 get
 		return
 	}
-	defer resp.Body.Close()
-	b, err := ioutil.ReadAll(resp.Body)
+	defer resp.Body.Close() // 确保响应体被关闭
+
+	// 读取响应内容
+	b, err := io.ReadAll(resp.Body)
 	if err != nil {
-		fmt.Println("get resp failed,err:%v\n", err)
+		fmt.Printf("read resp failed,err:%v\n", err)
 		return
 	}
+	// 打印响应结果
 	fmt.Println(string(b))
 }

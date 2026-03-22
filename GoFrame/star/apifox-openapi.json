@@ -17,6 +17,10 @@
       "description": "用户相关接口"
     },
     {
+      "name": "单词",
+      "description": "单词管理接口"
+    },
+    {
       "name": "Hello",
       "description": "示例接口"
     }
@@ -244,6 +248,115 @@
                       }
                     }
                   }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "未授权",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/words": {
+      "post": {
+        "tags": ["单词"],
+        "summary": "创建",
+        "operationId": "createWord",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["word", "definition", "example_sentence", "chinese_translation", "pronunciation", "proficiency_level"],
+                "properties": {
+                  "word": {
+                    "type": "string",
+                    "description": "单词",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "example": "hello"
+                  },
+                  "definition": {
+                    "type": "string",
+                    "description": "单词定义",
+                    "minLength": 1,
+                    "maxLength": 300,
+                    "example": "used as a greeting or to begin a phone conversation"
+                  },
+                  "example_sentence": {
+                    "type": "string",
+                    "description": "例句",
+                    "minLength": 1,
+                    "maxLength": 300,
+                    "example": "Hello, how are you today?"
+                  },
+                  "chinese_translation": {
+                    "type": "string",
+                    "description": "中文翻译",
+                    "minLength": 1,
+                    "maxLength": 300,
+                    "example": "你好，你今天怎么样？"
+                  },
+                  "pronunciation": {
+                    "type": "string",
+                    "description": "发音",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "example": "/həˈloʊ/"
+                  },
+                  "proficiency_level": {
+                    "type": "integer",
+                    "description": "熟练度，1最低，5最高",
+                    "minimum": 1,
+                    "maximum": 5,
+                    "example": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "创建成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求参数错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }

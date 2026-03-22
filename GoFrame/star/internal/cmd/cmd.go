@@ -2,12 +2,13 @@ package cmd
 
 import (
 	"context"
+	"star/internal/controller/account"
+	"star/internal/logic/middleware"
 
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gcmd"
 
-	"star/internal/controller/hello"
 	"star/internal/controller/users"
 )
 
@@ -20,13 +21,16 @@ var (
 			s := g.Server()
 			s.Group("/", func(group *ghttp.RouterGroup) {
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
-				group.Bind(
-					hello.NewV1(),
-				)
 				group.Group("/v1", func(group *ghttp.RouterGroup) {
 					group.Bind(
 						users.NewV1(),
 					)
+					group.Group("/", func(group *ghttp.RouterGroup) {
+						group.Middleware(middleware.Auth)
+						group.Bind(
+							account.NewV1(),
+						)
+					})
 				})
 			})
 			s.Run()

@@ -1,0 +1,290 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Star API",
+    "description": "GoFrame Star 项目接口文档",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "本地开发环境"
+    }
+  ],
+  "tags": [
+    {
+      "name": "用户",
+      "description": "用户相关接口"
+    },
+    {
+      "name": "Hello",
+      "description": "示例接口"
+    }
+  ],
+  "paths": {
+    "/hello": {
+      "get": {
+        "tags": ["Hello"],
+        "summary": "You first hello api",
+        "operationId": "hello",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "example": "Hello World"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/register": {
+      "post": {
+        "tags": ["用户"],
+        "summary": "注册",
+        "operationId": "register",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password", "email"],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "用户名",
+                    "minLength": 3,
+                    "maxLength": 12,
+                    "example": "testuser"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "密码",
+                    "minLength": 6,
+                    "maxLength": 16,
+                    "example": "123456"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "邮箱",
+                    "example": "test@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "注册成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求参数错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["用户"],
+        "summary": "登录",
+        "operationId": "login",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "password"],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "用户名",
+                    "minLength": 3,
+                    "maxLength": 12,
+                    "example": "testuser"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "密码",
+                    "minLength": 6,
+                    "maxLength": 16,
+                    "example": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "token": {
+                          "type": "string",
+                          "description": "在需要鉴权的接口中header加入Authorization: token",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "用户名或密码错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/info": {
+      "get": {
+        "tags": ["用户"],
+        "summary": "获取信息",
+        "operationId": "accountInfo",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "获取成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "string",
+                          "description": "用户名",
+                          "example": "testuser"
+                        },
+                        "email": {
+                          "type": "string",
+                          "description": "邮箱",
+                          "example": "test@example.com"
+                        },
+                        "created": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "创建时间",
+                          "example": "2024-01-01T12:00:00Z"
+                        },
+                        "update": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "更新时间",
+                          "example": "2024-01-01T12:00:00Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "未授权",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": -1
+          },
+          "message": {
+            "type": "string",
+            "example": "error message"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "在需要鉴权的接口中header加入 Authorization: Bearer {token}"
+      }
+    }
+  }
+}

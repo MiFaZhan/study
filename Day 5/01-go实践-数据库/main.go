@@ -68,7 +68,7 @@ func main() {
 }
 
 func insterUser(db *sql.DB, user User) {
-	result, err := db.Exec("INSERT into users(name,age) VALUES (?,?)", user.Name, user.Age)
+	result, err := db.Exec("INSERT into students(name,age) VALUES (?,?)", user.Name, user.Age)
 	if err != nil {
 		log.Printf("插入数据失败", err)
 		return
@@ -79,7 +79,7 @@ func insterUser(db *sql.DB, user User) {
 }
 
 func createTable(db *sql.DB) {
-	sql := "create table if not exists users(id int primary key auto_increment,name varchar(20),age int)"
+	sql := "create table if not exists students(id int primary key auto_increment,name varchar(20),age int)"
 
 	_, err := db.Exec(sql)
 	if err != nil {
@@ -90,7 +90,7 @@ func createTable(db *sql.DB) {
 
 func queryUsers(db *sql.DB) ([]User, error) {
 	var users []User
-	rows, err := db.Query("select id,name,age from users")
+	rows, err := db.Query("select id,name,age from students")
 	if err != nil {
 		return nil, err
 	}
@@ -108,7 +108,7 @@ func queryUsers(db *sql.DB) ([]User, error) {
 }
 
 func updateUser(db *sql.DB, id int, name string, age int) {
-	result, err := db.Exec("UPDATE users SET name=?, age=? WHERE id=?", name, age, id)
+	result, err := db.Exec("UPDATE students SET name=?, age=? WHERE id=?", name, age, id)
 	if err != nil {
 		log.Printf("更新数据失败: %v", err)
 		return
@@ -119,7 +119,7 @@ func updateUser(db *sql.DB, id int, name string, age int) {
 }
 
 func deleteUser(db *sql.DB, id int) {
-	result, err := db.Exec("DELETE FROM users WHERE id=?", id)
+	result, err := db.Exec("DELETE FROM students WHERE id=?", id)
 	if err != nil {
 		log.Printf("删除数据失败: %v", err)
 		return

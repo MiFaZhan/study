@@ -8,6 +8,7 @@ import (
 	"github.com/gogf/gf/v2/os/gcmd"
 
 	"star/internal/controller/hello"
+	"star/internal/controller/users"
 )
 
 var (
@@ -22,6 +23,11 @@ var (
 				group.Bind(
 					hello.NewV1(),
 				)
+				group.Group("/v1", func(group *ghttp.RouterGroup) {
+					group.Bind(
+						users.NewV1(),
+					)
+				})
 			})
 			s.Run()
 			return nil

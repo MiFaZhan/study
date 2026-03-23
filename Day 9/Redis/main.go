@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/redis/go-redis/v9"
 )
@@ -10,7 +11,7 @@ import (
 var ctx = context.Background()
 
 func main() {
-	//创建redis客户端
+	// 创建 redis 客户端
 	rdb := redis.NewClient(&redis.Options{
 		Addr:         "localhost:6379",
 		Password:     "",
@@ -23,9 +24,16 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	println("连接成功，pong:", pong)
+	fmt.Println("========================================")
+	fmt.Printf("✓ Redis 连接成功 (PING: %s)\n", pong)
+	fmt.Println("========================================")
 
 	StringOperations(rdb)
-
+	SetOperations(rdb)
+	ListOperations(rdb)
 	HashOperations(rdb)
+
+	fmt.Println("\n========================================")
+	fmt.Println("✓ 所有操作完成")
+	fmt.Println("========================================")
 }

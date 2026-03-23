@@ -32,6 +32,7 @@ func main() {
 	SetOperations(rdb)
 	ListOperations(rdb)
 	HashOperations(rdb)
+	generalOperations(rdb)
 
 	fmt.Println("\n========================================")
 	fmt.Println("✓ 所有操作完成")

@@ -30,3 +30,7 @@ func connDb() error {
 	}
 	return nil
 }
+
+func aa() {
+
+}

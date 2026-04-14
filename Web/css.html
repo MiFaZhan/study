@@ -1,4 +1,12 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* HTML 注释 <!-- --> 不能用在 <style> 标签内 */
+    /* 类选择器 */
     .box {
         width: 200px;
         height: 200px;
@@ -6,15 +14,24 @@
         padding: 20px;
         margin: 20px;
     }
-    .box1 {
+    /* id选择器 */
+    #box1 {
         width: 200px;
         height: 200px;
         border: 1px solid red;
         padding: 20px;
         margin: 20px;
     }
+    /* 元素选择器 */
+    p {
+        text-align: center;
+        background-color: pink;
+    }
 </style>
+
+</head>
 <body>
+    
     <div class="box">
         我是一个盒子
         我有一个宽度
@@ -24,7 +41,12 @@
         我有一个外边距
     </div>
 
-    <div class="box1">
+    <div id="box1">
         我是盒子1
     </div>
+
+    <p>我是一个段落</p>
 </body>
+</html>
+
+

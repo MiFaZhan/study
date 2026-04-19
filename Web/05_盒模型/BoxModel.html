@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>盒子模型</title>
+    <meta name="description" content="CSS 盒子模型示例：content-box 与 border-box 的区别">
+    <title>CSS 盒子模型</title>
     <style>
     /* HTML 注释 <!-- --> 不能用在 <style> 标签内 */
-    /* 类选择器 */
+    /* 内容盒子：width = content，padding/border/margin 会增加元素实际尺寸 */
     .content-box {
         box-sizing: content-box;
         width: 400px;
@@ -15,7 +16,7 @@
         padding: 20px;
         margin: 20px;
     }
-    /* 类选择器 */
+    /* 边框盒子：width = content + padding + border，margin 单独计算 */
     .border-box {
         box-sizing: border-box;
         width: 400px;
@@ -27,13 +28,13 @@
     </style>
 </head>
 <body>
-    <!-- 内容盒子 -->
+    <!-- 内容盒子：实际宽度 = 400px(content) + 40px(padding左右) + 2px(border左右) = 442px -->
     <div class="content-box">
         content-box盒子
         <p>实际宽度：content-box宽度 + 内边距 + 边框 = 480px</p>
     </div>
-    
-    <!-- 边框盒子 -->
+
+    <!-- 边框盒子：实际宽度 = 400px(已包含 padding 和 border) -->
     <div class="border-box">
         border-box盒子
         <p>实际宽度：border-box宽度 = 440px</p>

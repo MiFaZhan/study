@@ -1,60 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HTML 表单示例：文本框、密码框、单选、多选、提交按钮" />
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            gap: 10px;
+        }
+    </style>
+    <title>HTML 表单示例</title>
 </head>
+
 <body>
-    <div>
+    <!-- 表单主要内容区域 -->
+    <main>
+        <!-- action: 表单提交地址，method: 提交方式(post/get) -->
         <form action="/" method="post">
-            <label for="name">用户名</label>
-            <input type="text" id="name" name="name" required>
+            <!-- 文本输入框 -->
+            <div>
+                <label for="name">用户名</label>
+                <input type="text" id="name" name="name" required /></div>
 
-            <br>
-            
-            <label for="password">密码：</label>
-            <input type="password" id="password" name="password" required>
+            <!-- 密码输入框 -->
+            <div>
+                <label for="password">密码：</label>
+                <input type="password" id="password" name="password" required /></div>
 
-            <br>
+            <!-- 单选按钮组 -->
+            <div>
+                <label>性别：</label>
+                <input type="radio" id="male" name="gender" value="male" checked />
+                <label for="male">男</label>
+                <input type="radio" id="female" name="gender" value="female" />
+                <label for="female">女</label></div>
 
-            <label>性别：</label>
-            <input type="radio" id="male" name="gender" value="male" checked>
-            <label for="male">男</label>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">女</label>
+            <!-- 复选框 -->
+            <div>
+                <input type="checkbox" id="subscribe" name="subscribe" checked />
+                <label for="subscribe">订阅新闻</label></div>
 
-            <br>
+            <!-- 邮箱输入框 -->
+            <div>
+                <label for="email">邮箱：</label>
+                <input type="email" id="email" name="email" required /></div>
 
-            <input type="checkbox" id="subscribe" name="subscribe" checked>
-            <label for="subscribe">订阅新闻</label>
+            <!-- 文本域 -->
+            <div>
+                <textarea name="message" id="message" rows="10">文本框</textarea>
+            </div>
 
-            <br>
-
-
-            <!-- <label>邮箱：</label> -->
-            <label for="email">邮箱：</label>
-            <input type="email" id="email" name="email" required>
-
-            <br>
-
-            <input type="submit" value="提交">
-            <input type="reset" value="重置">
-
-            <br>
-
-            <button type="submit">提交</button>
-            <button type="reset">重置</button>
+            <!-- 按钮区域 -->
+            <div>
+                <button type="submit">提交</button>
+                <button type="reset">重置</button>
+            </div>
         </form>
-        
-        <!-- 纯展示按钮，不会提交（用于前端交互） -->
+
+        <!-- 普通按钮：用于前端交互，不提交表单 -->
         <button type="button" onclick="alert('你好！')">点我打招呼</button>
-
-        <br>
-
-        <textarea name="message" rows="10" id="">
-            文本框
-        </textarea>
-    </div>
+    </main>
 </body>
+
 </html>

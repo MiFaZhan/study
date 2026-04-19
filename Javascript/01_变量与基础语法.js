@@ -48,12 +48,14 @@ while (condition) {
 
 let array = [10, 20, 30];
 console.log("for...of遍历数组:");
+// for...of — 遍历值
 for (let item of array) {
     console.log(item);
 }
 
 let object = { name: "Alice", age: 25 };
 console.log("for...in遍历对象:");
+// for...in — 遍历索引
 for (let k in object) {
     console.log(k, ":", object[k]);
 }

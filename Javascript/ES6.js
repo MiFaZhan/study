@@ -11,10 +11,10 @@ const handler = function() {
 
 const obj = {
   __proto__: proto,
-  handler,                          // 简写
+  handler,                          // 简写 等同于 handler: handler
   counter,                          // 简写
 
-  greet(name) {                     // 方法简写
+  greet(name) {                     // 方法简写 等同于 greet: function(name) { return ... }
     return `Hello, ${name}!`;
   },
 

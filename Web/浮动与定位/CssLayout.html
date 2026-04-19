@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动与定位</title>
+    <link rel="stylesheet" href="CssLayout.css">
+</head>
+<body>
+    <h1>CSS 浮动与定位</h1>
+
+    <h2>1. 浮动 float</h2>
+    <div>
+        <div class="float-img">图片</div>
+        文字环绕效果。浮动让元素靠边，内容自动围绕。主要用于图文混排，已逐渐被 Flexbox 取代
+    </div>
+    <br><br>
+
+    <h2>2. relative 相对定位</h2>
+    <p>原位占坑，相对自己偏移</p>
+    <div class="box relative">原位置</div>
+    <div class="box relative-offset">偏移后</div>
+
+    <h2>3. absolute 绝对定位</h2>
+    <p>相对于最近定位父级进行定位，脱离文档流，不占原空间。</p>
+    <p>absolute-wrap 作为定位父级，absolute 元素相对于它定位</p>
+    <div class="absolute-wrap">
+        <!-- absolute 元素距离父级别top:10px，right:10px -->
+        <div class="box absolute">absolute</div>
+    </div>
+
+    <h2>4. fixed 固定定位</h2>
+    <p>相对于浏览器窗口，滚动也不动</p>
+    <div class="box fixed">fixed</div>
+
+    <hr>
+
+</body>
+</html>

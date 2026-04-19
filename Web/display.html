@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .paragraph {
+            display: inline-block;
+        }
+        .block-span {
+            display: block;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!-- span元素因为display: block;独占一行 -->
+        <span class="block-span">
+            我是一个span元素
+        </span>
+        <span class="block-span">
+            我是一个span元素
+        </span>
+    </div>
+    <!-- p元素因为display: inline-block;不独占一行 -->
+    <p class="paragraph">我是段落1</p>
+    <p class="paragraph">我是段落2</p>
+    <p class="paragraph">我是段落3</p>
+
+    <span class="hidden">我会消失</span>
+</body>
+</html>

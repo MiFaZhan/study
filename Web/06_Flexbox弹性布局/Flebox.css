@@ -1,0 +1,42 @@
+body {
+    /* direction: rtl; */
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 400px;
+    height: 250px;
+    background-color: lightgrey;
+    margin: 0 auto 50px auto;
+}
+
+.flex-item {
+    background-color: cornflowerblue;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.Navigation {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: -webkit-flex;
+    display: flex;
+    height: 200px;
+}
+
+.left { 
+    width: 200px; 
+    background: pink; 
+}
+
+.right { 
+    width: 150px; 
+    background: pink; 
+}
+
+.center { 
+    flex: 1; 
+    background: skyblue; 
+} /* 吃掉所有剩余空间 */

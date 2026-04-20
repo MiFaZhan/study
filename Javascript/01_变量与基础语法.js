@@ -67,6 +67,7 @@ console.log("add(2, 3) =", add(2, 3));
 const subtract = (a, b) => a - b;
 console.log("subtract(5, 2) =", subtract(5, 2));
 
+// 没有提升：必须在定义后调用
 const multiply = function(a, b) { return a * b; };
 console.log("multiply(3, 4) =", multiply(3, 4));
 

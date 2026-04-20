@@ -72,6 +72,7 @@ async function parallelFetch() {
 parallelFetch();
 
 // 6. Promise.race（竞态）
+// 多个 Promise 竞争，返回最先完成（无论成功或失败）的 Promise 的结果
 Promise.race([
     new Promise(resolve => setTimeout(() => resolve("快速"), 100)),
     new Promise(resolve => setTimeout(() => resolve("慢速"), 500))

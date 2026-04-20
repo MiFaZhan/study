@@ -23,6 +23,8 @@ const toRemove = document.getElementById("to-remove");
 if (toRemove && toRemove.parentNode) {
     toRemove.parentNode.removeChild(toRemove);
 }
+// ES6+
+toRemove.remove();  
 
 // 修改元素内容
 element.textContent = "新文本内容";
